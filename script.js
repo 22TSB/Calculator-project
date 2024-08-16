@@ -25,8 +25,8 @@ const button9 = document.querySelector(".button9");
 
 // VARIABLE
 
-var displayValue = 5;
-var firstNumber = 0;
+var displayValue = 0;
+var firstNumber = null;
 var secondNumber = null;
 var operator = undefined;
 var switchOperator = false;
