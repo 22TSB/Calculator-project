@@ -483,40 +483,42 @@ const addNumber = (e) => {
 };
 
 const addOperator = (e) => {
-    if (!displayCalculator.textContent.includes("%") && !displayCalculator.textContent.includes("*") && !displayCalculator.textContent.includes("/") && !displayCalculator.textContent.includes("+") && !displayCalculator.textContent.includes("-")) {
-        let addOperator = e.target.getAttribute("class");
-        switch (addOperator) {
-            case "buttonSize buttonProcent":
-                operator = "%";
-                break;
-            case "buttonSize buttonMultiply":
-                operator = "*";
-                break;
-            case "buttonSize buttonMinus":
-                operator = "-";
-                break;
-            case "buttonSize buttonPlus":
-                operator = "+";
-                break;
-            case "buttonSize buttonDivide":
-                operator = "/";
-                break;
+    if (!displayCalculator.textContent.includes("%") && !displayCalculator.textContent.includes("*") && !displayCalculator.textContent.includes("/") && !displayCalculator.textContent.includes("+")) {
+        if ((displayCalculator.textContent.includes("-") && (displayCalculator.textContent[0] === "-")) || !switchOperator) {
+            let addOperator = e.target.getAttribute("class");
+            switch (addOperator) {
+                case "buttonSize buttonProcent":
+                    operator = "%";
+                    break;
+                case "buttonSize buttonMultiply":
+                    operator = "*";
+                    break;
+                case "buttonSize buttonMinus":
+                    operator = "-";
+                    break;
+                case "buttonSize buttonPlus":
+                    operator = "+";
+                    break;
+                case "buttonSize buttonDivide":
+                    operator = "/";
+                    break;
+            }
+            let displaySymbol = displayCalculator.textContent[displayCalculator.textContent.length - 1];
+            if (displaySymbol === "%" || displaySymbol === "*" || displaySymbol === "/" || displaySymbol === "+" || displaySymbol === "-") {
+                let newDisplay = displayCalculator.textContent.slice(0, -1);
+                displayCalculator.textContent = newDisplay;
+                displayCalculator.textContent += operator;
+            }
+            else {
+                displayCalculator.textContent += operator;
+            }
+            if (!switchOperator) {
+                switchOperator = true;
+            }
+            decimalOperator = false;
+            decimalPower = 1;
+            decimalCounter = 0;
         }
-        let displaySymbol = displayCalculator.textContent[displayCalculator.textContent.length - 1];
-        if (displaySymbol === "%" || displaySymbol === "*" || displaySymbol === "/" || displaySymbol === "+" || displaySymbol === "-") {
-            let newDisplay = displayCalculator.textContent.slice(0, -1);
-            displayCalculator.textContent = newDisplay;
-            displayCalculator.textContent += operator;
-        }
-        else {
-            displayCalculator.textContent += operator;
-        }
-        if (!switchOperator) {
-            switchOperator = true;
-        }
-        decimalOperator = false;
-        decimalPower = 1;
-        decimalCounter = 0;
     }
 };
 
