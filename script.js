@@ -1,5 +1,6 @@
 // DOM
 
+const displayCalculatorHistory = document.querySelector(".dspCalcHistory");
 const displayCalculator = document.querySelector(".dspCalc");
 
 const buttonClear = document.querySelector(".buttonClear");
@@ -116,6 +117,7 @@ const resetFunction = () => {
     decimalCounter = 0;
     firstOperation = true;
     displayCalculator.textContent = "";
+    displayCalculatorHistory.textContent = "";
 };
 
 const addPlusMinusToNumber = () => {
@@ -481,39 +483,41 @@ const addNumber = (e) => {
 };
 
 const addOperator = (e) => {
-    let addOperator = e.target.getAttribute("class");
-    switch (addOperator) {
-        case "buttonSize buttonProcent":
-            operator = "%";
-            break;
-        case "buttonSize buttonMultiply":
-            operator = "*";
-            break;
-        case "buttonSize buttonMinus":
-            operator = "-";
-            break;
-        case "buttonSize buttonPlus":
-            operator = "+";
-            break;
-        case "buttonSize buttonDivide":
-            operator = "/";
-            break;
+    if (!displayCalculator.textContent.includes("%") && !displayCalculator.textContent.includes("*") && !displayCalculator.textContent.includes("/") && !displayCalculator.textContent.includes("+") && !displayCalculator.textContent.includes("-")) {
+        let addOperator = e.target.getAttribute("class");
+        switch (addOperator) {
+            case "buttonSize buttonProcent":
+                operator = "%";
+                break;
+            case "buttonSize buttonMultiply":
+                operator = "*";
+                break;
+            case "buttonSize buttonMinus":
+                operator = "-";
+                break;
+            case "buttonSize buttonPlus":
+                operator = "+";
+                break;
+            case "buttonSize buttonDivide":
+                operator = "/";
+                break;
+        }
+        let displaySymbol = displayCalculator.textContent[displayCalculator.textContent.length - 1];
+        if (displaySymbol === "%" || displaySymbol === "*" || displaySymbol === "/" || displaySymbol === "+" || displaySymbol === "-") {
+            let newDisplay = displayCalculator.textContent.slice(0, -1);
+            displayCalculator.textContent = newDisplay;
+            displayCalculator.textContent += operator;
+        }
+        else {
+            displayCalculator.textContent += operator;
+        }
+        if (!switchOperator) {
+            switchOperator = true;
+        }
+        decimalOperator = false;
+        decimalPower = 1;
+        decimalCounter = 0;
     }
-    let displaySymbol = displayCalculator.textContent[displayCalculator.textContent.length - 1];
-    if (displaySymbol === "%" || displaySymbol === "*" || displaySymbol === "/" || displaySymbol === "+" || displaySymbol === "-") {
-        let newDisplay = displayCalculator.textContent.slice(0, -1);
-        displayCalculator.textContent = newDisplay;
-        displayCalculator.textContent += operator;
-    }
-    else {
-        displayCalculator.textContent += operator;
-    }
-    if (!switchOperator) {
-        switchOperator = true;
-    }
-    decimalOperator = false;
-    decimalPower = 1;
-    decimalCounter = 0;
 };
 
 const Equals = () => {
@@ -540,6 +544,9 @@ const Equals = () => {
 };
 
 const equalFunction = () => {
+    displayCalculatorHistory.textContent = displayCalculator.textContent;
+    displayCalculatorHistory.textContent += "=";
+    displayCalculatorHistory.textContent += displayValue.toString();
     displayCalculator.textContent = displayValue.toString();
     firstNumber = displayValue;
     operator = null;
