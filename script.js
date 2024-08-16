@@ -26,13 +26,12 @@ const button9 = document.querySelector(".button9");
 
 var displayValue = 5;
 var firstNumber = 0;
-var secondNumber = 0;
+var secondNumber = null;
 var operator = undefined;
 var switchOperator = false;
 var decimalOperator = false;
 var decimalPower = 1;
 var decimalCounter = 0;
-var firstOperation = true;
 
 // FUNCTIONS
 
@@ -81,11 +80,16 @@ const operate = (firstNumber, operator, secondNumber) => {
 const switchToDecimal = () => {
     if (!decimalOperator) {
         decimalOperator = true;
+        if (!displayCalculator.textContent.includes(".")) {
+            displayCalculator.textContent += ".";
+        }
+        else if (displayCalculator.textContent.includes(".") && switchOperator && !toString(secondNumber).includes(".")) {
+            displayCalculator.textContent += ".";
+        }
     }
     else {
         decimalCounter = false;
     }
-    displayCalculator.textContent += ".";
 };
 
 const increaseDecimal = () => {
@@ -206,9 +210,7 @@ const addNumber = (e) => {
                     }
                     break;
             }
-            if (firstOperation) {
-                displayCalculator.textContent += number;
-            }
+            displayCalculator.textContent += number;
         }
         else if (operator !== null) {
             switch (number) {
@@ -300,7 +302,7 @@ const addNumber = (e) => {
         if (!switchOperator) {
             switch (number) {
                 case "0":
-                    if (firstNumber > 0) {
+                    if (firstNumber >= 0) {
                         firstNumber = decimalNumber(firstNumber, 0);
                     }
                     else {
@@ -308,7 +310,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "1":
-                    if (firstNumber > 0) {
+                    if (firstNumber >= 0) {
                         firstNumber = decimalNumber(firstNumber, 1);
                     }
                     else {
@@ -316,7 +318,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "2":
-                    if (firstNumber > 0) {
+                    if (firstNumber >= 0) {
                         firstNumber = decimalNumber(firstNumber, 2);
                     }
                     else {
@@ -324,7 +326,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "3":
-                    if (firstNumber > 0) {
+                    if (firstNumber >= 0) {
                         firstNumber = decimalNumber(firstNumber, 3);
                     }
                     else {
@@ -332,7 +334,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "4":
-                    if (firstNumber > 0) {
+                    if (firstNumber >= 0) {
                         firstNumber = decimalNumber(firstNumber, 4);
                     }
                     else {
@@ -340,7 +342,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "5":
-                    if (firstNumber > 0) {
+                    if (firstNumber >= 0) {
                         firstNumber = decimalNumber(firstNumber, 5);
                     }
                     else {
@@ -348,7 +350,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "6":
-                    if (firstNumber > 0) {
+                    if (firstNumber >= 0) {
                         firstNumber = decimalNumber(firstNumber, 6);
                     }
                     else {
@@ -356,7 +358,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "7":
-                    if (firstNumber > 0) {
+                    if (firstNumber >= 0) {
                         firstNumber = decimalNumber(firstNumber, 7);
                     }
                     else {
@@ -364,7 +366,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "8":
-                    if (firstNumber > 0) {
+                    if (firstNumber >= 0) {
                         firstNumber = decimalNumber(firstNumber, 8);
                     }
                     else {
@@ -372,7 +374,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "9":
-                    if (firstNumber > 0) {
+                    if (firstNumber >= 0) {
                         firstNumber = decimalNumber(firstNumber, 9);
                     }
                     else {
@@ -384,14 +386,12 @@ const addNumber = (e) => {
                 decimalCounter++;
             }
             firstNumber = firstNumber.toFixed(decimalCounter) * 100 / 100;
-            if (firstOperation) {
-                displayCalculator.textContent += number;
-            }
+            displayCalculator.textContent += number;
         }
         else {
             switch (number) {
                 case "0":
-                    if (secondNumber > 0) {
+                    if (secondNumber >= 0) {
                         secondNumber = decimalNumber(secondNumber, 0);
                     }
                     else {
@@ -399,7 +399,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "1":
-                    if (secondNumber > 0) {
+                    if (secondNumber >= 0) {
                         secondNumber = decimalNumber(secondNumber, 1);
                     }
                     else {
@@ -407,7 +407,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "2":
-                    if (secondNumber > 0) {
+                    if (secondNumber >= 0) {
                         secondNumber = decimalNumber(secondNumber, 2);
                     }
                     else {
@@ -415,7 +415,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "3":
-                    if (secondNumber > 0) {
+                    if (secondNumber >= 0) {
                         secondNumber = decimalNumber(secondNumber, 3);
                     }
                     else {
@@ -423,7 +423,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "4":
-                    if (secondNumber > 0) {
+                    if (secondNumber >= 0) {
                         secondNumber = decimalNumber(secondNumber, 4);
                     }
                     else {
@@ -431,7 +431,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "5":
-                    if (secondNumber > 0) {
+                    if (secondNumber >= 0) {
                         secondNumber = decimalNumber(secondNumber, 5);
                     }
                     else {
@@ -439,7 +439,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "6":
-                    if (secondNumber > 0) {
+                    if (secondNumber >= 0) {
                         secondNumber = decimalNumber(secondNumber, 6);
                     }
                     else {
@@ -447,7 +447,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "7":
-                    if (secondNumber > 0) {
+                    if (secondNumber >= 0) {
                         secondNumber = decimalNumber(secondNumber, 7);
                     }
                     else {
@@ -455,7 +455,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "8":
-                    if (secondNumber > 0) {
+                    if (secondNumber >= 0) {
                         secondNumber = decimalNumber(secondNumber, 8);
                     }
                     else {
@@ -463,7 +463,7 @@ const addNumber = (e) => {
                     }
                     break;
                 case "9":
-                    if (secondNumber > 0) {
+                    if (secondNumber >= 0) {
                         secondNumber = decimalNumber(secondNumber, 9);
                     }
                     else {
@@ -499,7 +499,15 @@ const addOperator = (e) => {
             operator = "/";
             break;
     }
-    displayCalculator.textContent += operator.toString();
+    let displaySymbol = displayCalculator.textContent[displayCalculator.textContent.length - 1];
+    if (displaySymbol === "%" || displaySymbol === "*" || displaySymbol === "/" || displaySymbol === "+" || displaySymbol === "-") {
+        let newDisplay = displayCalculator.textContent.slice(0, -1);
+        displayCalculator.textContent = newDisplay;
+        displayCalculator.textContent += operator;
+    }
+    else {
+        displayCalculator.textContent += operator;
+    }
     if (!switchOperator) {
         switchOperator = true;
     }
@@ -509,7 +517,7 @@ const addOperator = (e) => {
 };
 
 const Equals = () => {
-    if (switchOperator) {
+    if (switchOperator && secondNumber !== null) {
         switch (operator) {
             case "+":
                 displayValue = add(firstNumber, secondNumber);
@@ -524,7 +532,7 @@ const Equals = () => {
                 displayValue = divide(firstNumber, secondNumber);
                 break;
             case "%":
-                displayValue = procent(firstNumber, secondNumber);
+                displayValue = percent(firstNumber, secondNumber);
                 break;
         }
         equalFunction();
@@ -535,9 +543,8 @@ const equalFunction = () => {
     displayCalculator.textContent = displayValue.toString();
     firstNumber = displayValue;
     operator = null;
-    switchOperator = true;
+    switchOperator = false;
     secondNumber = 0;
-    firstOperation = false;
 };
 
 // EVENT LISTENERS
