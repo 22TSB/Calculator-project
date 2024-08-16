@@ -108,7 +108,7 @@ const bigNumber = (increaseNumber, number) => {
 
 const resetFunction = () => {
     displayValue = 0;
-    firstNumber = 0;
+    firstNumber = null;
     secondNumber = null;
     operator = null;
     switchOperator = false;
@@ -483,7 +483,7 @@ const addNumber = (e) => {
 };
 
 const addOperator = (e) => {
-    if (!displayCalculator.textContent.includes("%") && !displayCalculator.textContent.includes("*") && !displayCalculator.textContent.includes("/") && !displayCalculator.textContent.includes("+")) {
+    if (firstNumber !== null && !displayCalculator.textContent.includes("%") && !displayCalculator.textContent.includes("*") && !displayCalculator.textContent.includes("/") && !displayCalculator.textContent.includes("+")) {
         if ((displayCalculator.textContent.includes("-") && (displayCalculator.textContent[0] === "-")) || !switchOperator) {
             let addOperator = e.target.getAttribute("class");
             switch (addOperator) {
