@@ -108,7 +108,7 @@ const bigNumber = (increaseNumber, number) => {
 const resetFunction = () => {
     displayValue = 0;
     firstNumber = 0;
-    secondNumber = 0;
+    secondNumber = null;
     operator = null;
     switchOperator = false;
     decimalOperator = false;
@@ -544,7 +544,7 @@ const equalFunction = () => {
     firstNumber = displayValue;
     operator = null;
     switchOperator = false;
-    secondNumber = 0;
+    secondNumber = null;
 };
 
 // EVENT LISTENERS
