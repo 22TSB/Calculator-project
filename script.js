@@ -130,259 +130,43 @@ const addNumber = (e) => {
     number = number[number.length - 1];
     if (!decimalOperator) {
         if (!switchOperator) {
-            switch (number) {
-                case "0":
+            for (let i = 0; i < 10; ++i) {
+                if (number === String(i)) {
                     if (firstNumber > 0) {
-                        firstNumber = bigNumber(firstNumber, 0);
+                        firstNumber = bigNumber(firstNumber, i);
                     }
                     else {
-                        firstNumber = 0;
+                        firstNumber = i;
                     }
-                    break;
-                case "1":
-                    if (firstNumber > 0) {
-                        firstNumber = bigNumber(firstNumber, 1);
-                    }
-                    else {
-                        firstNumber = 1;
-                    }
-                    break;
-                case "2":
-                    if (firstNumber > 0) {
-                        firstNumber = bigNumber(firstNumber, 2);
-                    }
-                    else {
-                        firstNumber = 2;
-                    }
-                    break;
-                case "3":
-                    if (firstNumber > 0) {
-                        firstNumber = bigNumber(firstNumber, 3);
-                    }
-                    else {
-                        firstNumber = 3;
-                    }
-                    break;
-                case "4":
-                    if (firstNumber > 0) {
-                        firstNumber = bigNumber(firstNumber, 4);
-                    }
-                    else {
-                        firstNumber = 4;
-                    }
-                    break;
-                case "5":
-                    if (firstNumber > 0) {
-                        firstNumber = bigNumber(firstNumber, 5);
-                    }
-                    else {
-                        firstNumber = 5;
-                    }
-                    break;
-                case "6":
-                    if (firstNumber > 0) {
-                        firstNumber = bigNumber(firstNumber, 6);
-                    }
-                    else {
-                        firstNumber = 6;
-                    }
-                    break;
-                case "7":
-                    if (firstNumber > 0) {
-                        firstNumber = bigNumber(firstNumber, 7);
-                    }
-                    else {
-                        firstNumber = 7;
-                    }
-                    break;
-                case "8":
-                    if (firstNumber > 0) {
-                        firstNumber = bigNumber(firstNumber, 8);
-                    }
-                    else {
-                        firstNumber = 8;
-                    }
-                    break;
-                case "9":
-                    if (firstNumber > 0) {
-                        firstNumber = bigNumber(firstNumber, 9);
-                    }
-                    else {
-                        firstNumber = 9;
-                    }
-                    break;
+                }
             }
             displayCalculator.textContent += number;
         }
         else if (operator !== null) {
-            switch (number) {
-                case "0":
+            for (let i = 0; i < 10; ++i) {
+                if (number === String(i)) {
                     if (secondNumber > 0) {
-                        secondNumber = bigNumber(secondNumber, 0);
+                        secondNumber = bigNumber(secondNumber, i);
                     }
                     else {
-                        secondNumber = 0;
+                        secondNumber = i;
                     }
-                    break;
-                case "1":
-                    if (secondNumber > 0) {
-                        secondNumber = bigNumber(secondNumber, 1);
-                    }
-                    else {
-                        secondNumber = 1;
-                    }
-                    break;
-                case "2":
-                    if (secondNumber > 0) {
-                        secondNumber = bigNumber(secondNumber, 2);
-                    }
-                    else {
-                        secondNumber = 2;
-                    }
-                    break;
-                case "3":
-                    if (secondNumber > 0) {
-                        secondNumber = bigNumber(secondNumber, 3);
-                    }
-                    else {
-                        secondNumber = 3;
-                    }
-                    break;
-                case "4":
-                    if (secondNumber > 0) {
-                        secondNumber = bigNumber(secondNumber, 4);
-                    }
-                    else {
-                        secondNumber = 4;
-                    }
-                    break;
-                case "5":
-                    if (secondNumber > 0) {
-                        secondNumber = bigNumber(secondNumber, 5);
-                    }
-                    else {
-                        secondNumber = 5;
-                    }
-                    break;
-                case "6":
-                    if (secondNumber > 0) {
-                        secondNumber = bigNumber(secondNumber, 6);
-                    }
-                    else {
-                        secondNumber = 6;
-                    }
-                    break;
-                case "7":
-                    if (secondNumber > 0) {
-                        secondNumber = bigNumber(secondNumber, 7);
-                    }
-                    else {
-                        secondNumber = 7;
-                    }
-                    break;
-                case "8":
-                    if (secondNumber > 0) {
-                        secondNumber = bigNumber(secondNumber, 8);
-                    }
-                    else {
-                        secondNumber = 8;
-                    }
-                    break;
-                case "9":
-                    if (secondNumber > 0) {
-                        secondNumber = bigNumber(secondNumber, 9);
-                    }
-                    else {
-                        secondNumber = 9;
-                    }
-                    break;
+                }
             }
             displayCalculator.textContent += number;
         }
     }
     else {
         if (!switchOperator) {
-            switch (number) {
-                case "0":
+            for (let i = 0; i < 10; ++i) {
+                if (number === String(i)) {
                     if (firstNumber >= 0) {
-                        firstNumber = decimalNumber(firstNumber, 0);
+                        firstNumber = decimalNumber(firstNumber, i);
                     }
                     else {
-                        firstNumber = 0;
+                        firstNumber = i;
                     }
-                    break;
-                case "1":
-                    if (firstNumber >= 0) {
-                        firstNumber = decimalNumber(firstNumber, 1);
-                    }
-                    else {
-                        firstNumber = 1;
-                    }
-                    break;
-                case "2":
-                    if (firstNumber >= 0) {
-                        firstNumber = decimalNumber(firstNumber, 2);
-                    }
-                    else {
-                        firstNumber = 2;
-                    }
-                    break;
-                case "3":
-                    if (firstNumber >= 0) {
-                        firstNumber = decimalNumber(firstNumber, 3);
-                    }
-                    else {
-                        firstNumber = 3;
-                    }
-                    break;
-                case "4":
-                    if (firstNumber >= 0) {
-                        firstNumber = decimalNumber(firstNumber, 4);
-                    }
-                    else {
-                        firstNumber = 4;
-                    }
-                    break;
-                case "5":
-                    if (firstNumber >= 0) {
-                        firstNumber = decimalNumber(firstNumber, 5);
-                    }
-                    else {
-                        firstNumber = 5;
-                    }
-                    break;
-                case "6":
-                    if (firstNumber >= 0) {
-                        firstNumber = decimalNumber(firstNumber, 6);
-                    }
-                    else {
-                        firstNumber = 6;
-                    }
-                    break;
-                case "7":
-                    if (firstNumber >= 0) {
-                        firstNumber = decimalNumber(firstNumber, 7);
-                    }
-                    else {
-                        firstNumber = 7;
-                    }
-                    break;
-                case "8":
-                    if (firstNumber >= 0) {
-                        firstNumber = decimalNumber(firstNumber, 8);
-                    }
-                    else {
-                        firstNumber = 8;
-                    }
-                    break;
-                case "9":
-                    if (firstNumber >= 0) {
-                        firstNumber = decimalNumber(firstNumber, 9);
-                    }
-                    else {
-                        firstNumber = 9;
-                    }
-                    break;
+                }
             }
             if (decimalCounter < 2) {
                 decimalCounter++;
@@ -391,87 +175,15 @@ const addNumber = (e) => {
             displayCalculator.textContent += number;
         }
         else {
-            switch (number) {
-                case "0":
+            for (let i = 0; i < 10; ++i) {
+                if (number === String(i)) {
                     if (secondNumber >= 0) {
-                        secondNumber = decimalNumber(secondNumber, 0);
+                        secondNumber = decimalNumber(secondNumber, i);
                     }
                     else {
-                        secondNumber = 0;
+                        secondNumber = i;
                     }
-                    break;
-                case "1":
-                    if (secondNumber >= 0) {
-                        secondNumber = decimalNumber(secondNumber, 1);
-                    }
-                    else {
-                        secondNumber = 1;
-                    }
-                    break;
-                case "2":
-                    if (secondNumber >= 0) {
-                        secondNumber = decimalNumber(secondNumber, 2);
-                    }
-                    else {
-                        secondNumber = 2;
-                    }
-                    break;
-                case "3":
-                    if (secondNumber >= 0) {
-                        secondNumber = decimalNumber(secondNumber, 3);
-                    }
-                    else {
-                        secondNumber = 3;
-                    }
-                    break;
-                case "4":
-                    if (secondNumber >= 0) {
-                        secondNumber = decimalNumber(secondNumber, 4);
-                    }
-                    else {
-                        secondNumber = 4;
-                    }
-                    break;
-                case "5":
-                    if (secondNumber >= 0) {
-                        secondNumber = decimalNumber(secondNumber, 5);
-                    }
-                    else {
-                        secondNumber = 5;
-                    }
-                    break;
-                case "6":
-                    if (secondNumber >= 0) {
-                        secondNumber = decimalNumber(secondNumber, 6);
-                    }
-                    else {
-                        secondNumber = 6;
-                    }
-                    break;
-                case "7":
-                    if (secondNumber >= 0) {
-                        secondNumber = decimalNumber(secondNumber, 7);
-                    }
-                    else {
-                        secondNumber = 7;
-                    }
-                    break;
-                case "8":
-                    if (secondNumber >= 0) {
-                        secondNumber = decimalNumber(secondNumber, 8);
-                    }
-                    else {
-                        secondNumber = 8;
-                    }
-                    break;
-                case "9":
-                    if (secondNumber >= 0) {
-                        secondNumber = decimalNumber(secondNumber, 9);
-                    }
-                    else {
-                        secondNumber = 9;
-                    }
-                    break;
+                }
             }
             if (decimalCounter < 2) {
                 decimalCounter++;
