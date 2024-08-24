@@ -1,38 +1,19 @@
 // DOM
 
+const buttonsCalculator = document.querySelector(".buttonsCalculator");
 const displayCalculatorHistory = document.querySelector(".dspCalcHistory");
 const displayCalculator = document.querySelector(".dspCalc");
 
-const buttonClear = document.querySelector(".buttonClear");
-const buttonPlusMinus = document.querySelector(".buttonPlusMinus");
-const buttonProcent = document.querySelector(".buttonProcent");
-const buttonDivide = document.querySelector(".buttonDivide");
-const buttonMultiply = document.querySelector(".buttonMultiply");
-const buttonMinus = document.querySelector(".buttonMinus");
-const buttonPlus = document.querySelector(".buttonPlus");
-const buttonEquals = document.querySelector(".buttonEquals");
-const buttonDecimal = document.querySelector(".buttonDecimal");
-const button0 = document.querySelector(".button0");
-const button1 = document.querySelector(".button1");
-const button2 = document.querySelector(".button2");
-const button3 = document.querySelector(".button3");
-const button4 = document.querySelector(".button4");
-const button5 = document.querySelector(".button5");
-const button6 = document.querySelector(".button6");
-const button7 = document.querySelector(".button7");
-const button8 = document.querySelector(".button8");
-const button9 = document.querySelector(".button9");
+// VARIABLES
 
-// VARIABLE
-
-var displayValue = 0;
-var firstNumber = null;
-var secondNumber = null;
-var operator = undefined;
-var switchOperator = false;
-var decimalOperator = false;
-var decimalPower = 1;
-var decimalCounter = 0;
+let displayValue = 0;
+let firstNumber = null;
+let secondNumber = null;
+let operator = undefined;
+let switchOperator = false;
+let decimalOperator = false;
+let decimalPower = 1;
+let decimalCounter = 0;
 
 // FUNCTIONS
 
@@ -75,8 +56,6 @@ const operate = (firstNumber, operator, secondNumber) => {
             break;
     }
 };
-
-
 
 const switchToDecimal = () => {
     if (!decimalOperator) {
@@ -125,8 +104,8 @@ const addPlusMinusToNumber = () => {
     displayCalculator.textContent = firstNumber.toString();
 };
 
-const addNumber = (e) => {
-    let number = e.target.getAttribute("class");
+const addNumber = (button) => {
+    let number = button;
     number = number[number.length - 1];
     if (!decimalOperator) {
         if (!switchOperator) {
@@ -194,10 +173,10 @@ const addNumber = (e) => {
     }
 };
 
-const addOperator = (e) => {
+const addOperator = (button) => {
     if (firstNumber !== null && !displayCalculator.textContent.includes("%") && !displayCalculator.textContent.includes("*") && !displayCalculator.textContent.includes("/") && !displayCalculator.textContent.includes("+")) {
         if ((displayCalculator.textContent.includes("-") && (displayCalculator.textContent[0] === "-")) || !switchOperator) {
-            let addOperator = e.target.getAttribute("class");
+            let addOperator = button;
             switch (addOperator) {
                 case "buttonSize buttonProcent":
                     operator = "%";
@@ -234,7 +213,7 @@ const addOperator = (e) => {
     }
 };
 
-const Equals = () => {
+const equals = () => {
     if (switchOperator && secondNumber !== null) {
         switch (operator) {
             case "+":
@@ -268,24 +247,30 @@ const equalFunction = () => {
     secondNumber = null;
 };
 
-// EVENT LISTENERS
+// EVENT LISTENER
 
-buttonClear.addEventListener("click", resetFunction);
-buttonPlusMinus.addEventListener("click", addPlusMinusToNumber);
-buttonProcent.addEventListener("click", addOperator);
-buttonDivide.addEventListener("click", addOperator);
-buttonMultiply.addEventListener("click", addOperator);
-buttonMinus.addEventListener("click", addOperator);
-buttonPlus.addEventListener("click", addOperator);
-buttonDecimal.addEventListener("click", switchToDecimal);
-buttonEquals.addEventListener("click", Equals);
-button0.addEventListener("click", addNumber);
-button1.addEventListener("click", addNumber);
-button2.addEventListener("click", addNumber);
-button3.addEventListener("click", addNumber);
-button4.addEventListener("click", addNumber);
-button5.addEventListener("click", addNumber);
-button6.addEventListener("click", addNumber);
-button7.addEventListener("click", addNumber);
-button8.addEventListener("click", addNumber);
-button9.addEventListener("click", addNumber);
+const click = (e) => {
+    const button = e.target.getAttribute("class");
+    switch (button) {
+        case "buttonSize button0": addNumber(button); break;
+        case "buttonSize button1": addNumber(button); break;
+        case "buttonSize button2": addNumber(button); break;
+        case "buttonSize button3": addNumber(button); break;
+        case "buttonSize button4": addNumber(button); break;
+        case "buttonSize button5": addNumber(button); break;
+        case "buttonSize button6": addNumber(button); break;
+        case "buttonSize button7": addNumber(button); break;
+        case "buttonSize button8": addNumber(button); break;
+        case "buttonSize button9": addNumber(button); break;
+        case "buttonSize buttonClear": resetFunction(); break;
+        case "buttonSize buttonPlusMinus": addPlusMinusToNumber(); break;
+        case "buttonSize buttonProcent": addOperator(button); break;
+        case "buttonSize buttonDivide": addOperator(button); break;
+        case "buttonSize buttonMultiply": addOperator(button); break;
+        case "buttonSize buttonMinus": addOperator(button); break;
+        case "buttonSize buttonPlus": addOperator(button); break;
+        case "buttonSize buttonDecimal": switchToDecimal(); break;
+        case "buttonSize buttonEquals": equals(); break;
+    }
+};
+buttonsCalculator.addEventListener("click", click);
