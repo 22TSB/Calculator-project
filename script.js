@@ -252,15 +252,15 @@ const equalFunction = () => {
 const click = (e) => {
     const button = e.target.getAttribute("class");
     switch (button) {
-        case "buttonSize button0": addNumber(button); break;
-        case "buttonSize button1": addNumber(button); break;
-        case "buttonSize button2": addNumber(button); break;
-        case "buttonSize button3": addNumber(button); break;
-        case "buttonSize button4": addNumber(button); break;
-        case "buttonSize button5": addNumber(button); break;
-        case "buttonSize button6": addNumber(button); break;
-        case "buttonSize button7": addNumber(button); break;
-        case "buttonSize button8": addNumber(button); break;
+        case "buttonSize button0":
+        case "buttonSize button1":
+        case "buttonSize button2":
+        case "buttonSize button3":
+        case "buttonSize button4":
+        case "buttonSize button5":
+        case "buttonSize button6":
+        case "buttonSize button7":
+        case "buttonSize button8":
         case "buttonSize button9": addNumber(button); break;
         case "buttonSize buttonClear": resetFunction(); break;
         case "buttonSize buttonPlusMinus": addPlusMinusToNumber(); break;
