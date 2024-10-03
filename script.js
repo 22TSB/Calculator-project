@@ -1,8 +1,8 @@
 // DOM
 
-const buttonsCalculator = document.querySelector(".buttonsCalculator");
-const displayCalculatorHistory = document.querySelector(".dspCalcHistory");
-const displayCalculator = document.querySelector(".dspCalc");
+const buttonsCalculator = document.querySelector('.buttonsCalculator');
+const displayCalculatorHistory = document.querySelector('.dspCalcHistory');
+const displayCalculator = document.querySelector('.dspCalc');
 
 // VARIABLES
 
@@ -39,19 +39,19 @@ const percent = (firstNumber, secondNumber) => {
 
 const operate = (firstNumber, operator, secondNumber) => {
     switch (operator) {
-        case "+":
+        case '+':
             add(firstNumber, secondNumber);
             break;
-        case "-":
+        case '-':
             subtract(firstNumber, secondNumber);
             break;
-        case "*":
+        case '*':
             multiply(firstNumber, secondNumber);
             break;
-        case "/":
+        case '/':
             divide(firstNumber, secondNumber);
             break;
-        case "%":
+        case '%':
             percent(firstNumber, secondNumber);
             break;
     }
@@ -60,14 +60,16 @@ const operate = (firstNumber, operator, secondNumber) => {
 const switchToDecimal = () => {
     if (!decimalOperator) {
         decimalOperator = true;
-        if (!displayCalculator.textContent.includes(".")) {
-            displayCalculator.textContent += ".";
+        if (!displayCalculator.textContent.includes('.')) {
+            displayCalculator.textContent += '.';
+        } else if (
+            displayCalculator.textContent.includes('.') &&
+            switchOperator &&
+            !toString(secondNumber).includes('.')
+        ) {
+            displayCalculator.textContent += '.';
         }
-        else if (displayCalculator.textContent.includes(".") && switchOperator && !toString(secondNumber).includes(".")) {
-            displayCalculator.textContent += ".";
-        }
-    }
-    else {
+    } else {
         decimalCounter = false;
     }
 };
@@ -78,11 +80,11 @@ const increaseDecimal = () => {
 
 const decimalNumber = (increaseNumber, number) => {
     increaseDecimal();
-    return (number / decimalPower) + increaseNumber;
+    return number / decimalPower + increaseNumber;
 };
 
 const bigNumber = (increaseNumber, number) => {
-    return (increaseNumber * 10) + number;
+    return increaseNumber * 10 + number;
 };
 
 const resetFunction = () => {
@@ -95,8 +97,8 @@ const resetFunction = () => {
     decimalPower = 1;
     decimalCounter = 0;
     firstOperation = true;
-    displayCalculator.textContent = "";
-    displayCalculatorHistory.textContent = "";
+    displayCalculator.textContent = '';
+    displayCalculatorHistory.textContent = '';
 };
 
 const addPlusMinusToNumber = () => {
@@ -113,36 +115,31 @@ const addNumber = (button) => {
                 if (number === String(i)) {
                     if (firstNumber > 0) {
                         firstNumber = bigNumber(firstNumber, i);
-                    }
-                    else {
+                    } else {
                         firstNumber = i;
                     }
                 }
             }
             displayCalculator.textContent += number;
-        }
-        else if (operator !== null) {
+        } else if (operator !== null) {
             for (let i = 0; i < 10; ++i) {
                 if (number === String(i)) {
                     if (secondNumber > 0) {
                         secondNumber = bigNumber(secondNumber, i);
-                    }
-                    else {
+                    } else {
                         secondNumber = i;
                     }
                 }
             }
             displayCalculator.textContent += number;
         }
-    }
-    else {
+    } else {
         if (!switchOperator) {
             for (let i = 0; i < 10; ++i) {
                 if (number === String(i)) {
                     if (firstNumber >= 0) {
                         firstNumber = decimalNumber(firstNumber, i);
-                    }
-                    else {
+                    } else {
                         firstNumber = i;
                     }
                 }
@@ -150,16 +147,14 @@ const addNumber = (button) => {
             if (decimalCounter < 2) {
                 decimalCounter++;
             }
-            firstNumber = firstNumber.toFixed(decimalCounter) * 100 / 100;
+            firstNumber = (firstNumber.toFixed(decimalCounter) * 100) / 100;
             displayCalculator.textContent += number;
-        }
-        else {
+        } else {
             for (let i = 0; i < 10; ++i) {
                 if (number === String(i)) {
                     if (secondNumber >= 0) {
                         secondNumber = decimalNumber(secondNumber, i);
-                    }
-                    else {
+                    } else {
                         secondNumber = i;
                     }
                 }
@@ -167,40 +162,58 @@ const addNumber = (button) => {
             if (decimalCounter < 2) {
                 decimalCounter++;
             }
-            secondNumber = secondNumber.toFixed(decimalCounter) * 100 / 100;
+            secondNumber = (secondNumber.toFixed(decimalCounter) * 100) / 100;
             displayCalculator.textContent += number;
         }
     }
 };
 
 const addOperator = (button) => {
-    if (firstNumber !== null && !displayCalculator.textContent.includes("%") && !displayCalculator.textContent.includes("*") && !displayCalculator.textContent.includes("/") && !displayCalculator.textContent.includes("+")) {
-        if ((displayCalculator.textContent.includes("-") && (displayCalculator.textContent[0] === "-")) || !switchOperator) {
+    if (
+        firstNumber !== null &&
+        !displayCalculator.textContent.includes('%') &&
+        !displayCalculator.textContent.includes('*') &&
+        !displayCalculator.textContent.includes('/') &&
+        !displayCalculator.textContent.includes('+')
+    ) {
+        if (
+            (displayCalculator.textContent.includes('-') &&
+                displayCalculator.textContent[0] === '-') ||
+            !switchOperator
+        ) {
             let addOperator = button;
             switch (addOperator) {
-                case "buttonSize buttonProcent":
-                    operator = "%";
+                case 'buttonSize buttonProcent':
+                    operator = '%';
                     break;
-                case "buttonSize buttonMultiply":
-                    operator = "*";
+                case 'buttonSize buttonMultiply':
+                    operator = '*';
                     break;
-                case "buttonSize buttonMinus":
-                    operator = "-";
+                case 'buttonSize buttonMinus':
+                    operator = '-';
                     break;
-                case "buttonSize buttonPlus":
-                    operator = "+";
+                case 'buttonSize buttonPlus':
+                    operator = '+';
                     break;
-                case "buttonSize buttonDivide":
-                    operator = "/";
+                case 'buttonSize buttonDivide':
+                    operator = '/';
                     break;
             }
-            let displaySymbol = displayCalculator.textContent[displayCalculator.textContent.length - 1];
-            if (displaySymbol === "%" || displaySymbol === "*" || displaySymbol === "/" || displaySymbol === "+" || displaySymbol === "-") {
+            let displaySymbol =
+                displayCalculator.textContent[
+                    displayCalculator.textContent.length - 1
+                ];
+            if (
+                displaySymbol === '%' ||
+                displaySymbol === '*' ||
+                displaySymbol === '/' ||
+                displaySymbol === '+' ||
+                displaySymbol === '-'
+            ) {
                 let newDisplay = displayCalculator.textContent.slice(0, -1);
                 displayCalculator.textContent = newDisplay;
                 displayCalculator.textContent += operator;
-            }
-            else {
+            } else {
                 displayCalculator.textContent += operator;
             }
             if (!switchOperator) {
@@ -216,19 +229,19 @@ const addOperator = (button) => {
 const equals = () => {
     if (switchOperator && secondNumber !== null) {
         switch (operator) {
-            case "+":
+            case '+':
                 displayValue = add(firstNumber, secondNumber);
                 break;
-            case "-":
+            case '-':
                 displayValue = subtract(firstNumber, secondNumber);
                 break;
-            case "*":
+            case '*':
                 displayValue = multiply(firstNumber, secondNumber);
                 break;
-            case "/":
+            case '/':
                 displayValue = divide(firstNumber, secondNumber);
                 break;
-            case "%":
+            case '%':
                 displayValue = percent(firstNumber, secondNumber);
                 break;
         }
@@ -237,8 +250,10 @@ const equals = () => {
 };
 
 const equalFunction = () => {
+    const number = Number(displayValue.toFixed(4));
+    displayValue = number;
     displayCalculatorHistory.textContent = displayCalculator.textContent;
-    displayCalculatorHistory.textContent += "=";
+    displayCalculatorHistory.textContent += '=';
     displayCalculatorHistory.textContent += displayValue.toString();
     displayCalculator.textContent = displayValue.toString();
     firstNumber = displayValue;
@@ -250,27 +265,47 @@ const equalFunction = () => {
 // EVENT LISTENER
 
 const click = (e) => {
-    const button = e.target.getAttribute("class");
+    const button = e.target.getAttribute('class');
     switch (button) {
-        case "buttonSize button0":
-        case "buttonSize button1":
-        case "buttonSize button2":
-        case "buttonSize button3":
-        case "buttonSize button4":
-        case "buttonSize button5":
-        case "buttonSize button6":
-        case "buttonSize button7":
-        case "buttonSize button8":
-        case "buttonSize button9": addNumber(button); break;
-        case "buttonSize buttonClear": resetFunction(); break;
-        case "buttonSize buttonPlusMinus": addPlusMinusToNumber(); break;
-        case "buttonSize buttonProcent": addOperator(button); break;
-        case "buttonSize buttonDivide": addOperator(button); break;
-        case "buttonSize buttonMultiply": addOperator(button); break;
-        case "buttonSize buttonMinus": addOperator(button); break;
-        case "buttonSize buttonPlus": addOperator(button); break;
-        case "buttonSize buttonDecimal": switchToDecimal(); break;
-        case "buttonSize buttonEquals": equals(); break;
+        case 'buttonSize button0':
+        case 'buttonSize button1':
+        case 'buttonSize button2':
+        case 'buttonSize button3':
+        case 'buttonSize button4':
+        case 'buttonSize button5':
+        case 'buttonSize button6':
+        case 'buttonSize button7':
+        case 'buttonSize button8':
+        case 'buttonSize button9':
+            addNumber(button);
+            break;
+        case 'buttonSize buttonClear':
+            resetFunction();
+            break;
+        case 'buttonSize buttonPlusMinus':
+            addPlusMinusToNumber();
+            break;
+        case 'buttonSize buttonProcent':
+            addOperator(button);
+            break;
+        case 'buttonSize buttonDivide':
+            addOperator(button);
+            break;
+        case 'buttonSize buttonMultiply':
+            addOperator(button);
+            break;
+        case 'buttonSize buttonMinus':
+            addOperator(button);
+            break;
+        case 'buttonSize buttonPlus':
+            addOperator(button);
+            break;
+        case 'buttonSize buttonDecimal':
+            switchToDecimal();
+            break;
+        case 'buttonSize buttonEquals':
+            equals();
+            break;
     }
 };
-buttonsCalculator.addEventListener("click", click);
+buttonsCalculator.addEventListener('click', click);

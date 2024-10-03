@@ -31,7 +31,7 @@ h1 {
 }
 
 .buttonsRow {
-    display: flex;   
+    display: flex;
 }
 
 .buttonSize {
@@ -40,7 +40,6 @@ h1 {
     align-items: center;
     width: 80px;
     height: 80px;
-    
 }
 
 .buttonSize:hover {
@@ -99,7 +98,7 @@ h1 {
 .buttonMultiply,
 .buttonMinus,
 .buttonPlus,
-.buttonEquals  {
+.buttonEquals {
     border-radius: 0px;
     background-color: greenyellow;
 }
@@ -111,4 +110,19 @@ h1 {
 .buttonEquals:hover {
     border-radius: 0px;
     background-color: rgb(139, 232, 0);
+}
+
+.displayCalculator2 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    width: 100%;
+}
+
+.dspCalc {
+    text-align: end;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    width: 100%;
 }
