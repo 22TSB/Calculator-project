@@ -1,0 +1,128 @@
+h1 {
+    font-size: 2rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+}
+
+.calculator {
+    border: 12px solid black;
+    overflow: hidden;
+    border-radius: 20px;
+    font-size: 2rem;
+}
+
+.displayCalculator {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    width: 296px;
+    min-height: 100px;
+    padding: 12px;
+}
+
+.buttonsCalculator {
+    border-top: 12px solid black;
+}
+
+.buttonsRow {
+    display: flex;
+}
+
+.buttonSize {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+}
+
+.buttonSize:hover {
+    cursor: pointer;
+}
+
+.button0 {
+    width: 160px;
+    height: 80px;
+}
+
+.button0,
+.button1,
+.button2,
+.button3,
+.button4,
+.button5,
+.button6,
+.button7,
+.button8,
+.button9,
+.buttonDecimal {
+    background-color: whitesmoke;
+}
+
+.button0:hover,
+.button1:hover,
+.button2:hover,
+.button3:hover,
+.button4:hover,
+.button5:hover,
+.button6:hover,
+.button7:hover,
+.button8:hover,
+.button9:hover,
+.buttonDecimal:hover {
+    background-color: rgb(235, 235, 235);
+}
+
+.buttonClear,
+.buttonPlusMinus,
+.buttonProcent {
+    background-color: rgb(222, 222, 222);
+}
+
+.buttonPlusMinus:hover,
+.buttonProcent:hover {
+    background-color: rgb(200, 200, 200);
+}
+
+.buttonClear:hover {
+    background-color: rgb(255, 100, 100);
+}
+
+.buttonDivide,
+.buttonMultiply,
+.buttonMinus,
+.buttonPlus,
+.buttonEquals {
+    border-radius: 0px;
+    background-color: greenyellow;
+}
+
+.buttonDivide:hover,
+.buttonMultiply:hover,
+.buttonMinus:hover,
+.buttonPlus:hover,
+.buttonEquals:hover {
+    border-radius: 0px;
+    background-color: rgb(139, 232, 0);
+}
+
+.displayCalculator2 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    width: 100%;
+}
+
+.dspCalc {
+    text-align: end;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    width: 100%;
+}
