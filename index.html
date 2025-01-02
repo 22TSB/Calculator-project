@@ -4,7 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <link rel="stylesheet" href="reset.css" />
         <link rel="stylesheet" href="style.css" />
+        <script defer src="script.js"></script>
     </head>
     <body>
         <div class="container">
@@ -15,39 +17,28 @@
                         <h1 class="dspCalc"></h1>
                     </div>
                 </div>
-                <div class="buttonsCalculator">
-                    <div class="buttonsRow">
-                        <div class="buttonSize buttonClear">AC</div>
-                        <div class="buttonSize buttonPlusMinus">+/-</div>
-                        <div class="buttonSize buttonProcent">%</div>
-                        <div class="buttonSize buttonDivide">/</div>
-                    </div>
-                    <div class="buttonsRow">
-                        <div class="buttonSize button7">7</div>
-                        <div class="buttonSize button8">8</div>
-                        <div class="buttonSize button9">9</div>
-                        <div class="buttonSize buttonMultiply">*</div>
-                    </div>
-                    <div class="buttonsRow">
-                        <div class="buttonSize button4">4</div>
-                        <div class="buttonSize button5">5</div>
-                        <div class="buttonSize button6">6</div>
-                        <div class="buttonSize buttonMinus">-</div>
-                    </div>
-                    <div class="buttonsRow">
-                        <div class="buttonSize button1">1</div>
-                        <div class="buttonSize button2">2</div>
-                        <div class="buttonSize button3">3</div>
-                        <div class="buttonSize buttonPlus">+</div>
-                    </div>
-                    <div class="buttonsRow">
-                        <div class="buttonSize button0">0</div>
-                        <div class="buttonSize buttonDecimal">.</div>
-                        <div class="buttonSize buttonEquals">=</div>
-                    </div>
+                <div class="buttons">
+                    <button class="button clear">AC</button>
+                    <button class="button operate">+/-</button>
+                    <button class="button operate">%</button>
+                    <button class="button operate">/</button>
+                    <button class="button number">7</button>
+                    <button class="button number">8</button>
+                    <button class="button number">9</button>
+                    <button class="button operate">*</button>
+                    <button class="button number">4</button>
+                    <button class="button number">5</button>
+                    <button class="button number">6</button>
+                    <button class="button operate">-</button>
+                    <button class="button number">1</button>
+                    <button class="button number">2</button>
+                    <button class="button number">3</button>
+                    <button class="button operate">+</button>
+                    <button class="button number b0">0</button>
+                    <button class="button number">.</button>
+                    <button class="button operate">=</button>
                 </div>
             </div>
         </div>
-        <script src="script.js"></script>
     </body>
 </html>

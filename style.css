@@ -24,92 +24,55 @@ h1 {
     width: 296px;
     min-height: 100px;
     padding: 12px;
+    border-bottom: 12px solid black;
 }
 
-.buttonsCalculator {
-    border-top: 12px solid black;
+/* style */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 320px;
+    user-select: none;
 }
 
-.buttonsRow {
-    display: flex;
+.buttons button {
+    text-align: center;
+    height: 60px;
 }
 
-.buttonSize {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
-    height: 80px;
+.b0 {
+    grid-column: span 2;
 }
 
-.buttonSize:hover {
+.clear,
+.operate,
+.number {
     cursor: pointer;
+    transition: 0.1s ease-in-out;
+    transition-property: font-weight;
+    background-color: hsl(0, 0%, 95%);
 }
 
-.button0 {
-    width: 160px;
-    height: 80px;
+.number:hover {
+    background-color: hsl(0, 0%, 90%);
 }
 
-.button0,
-.button1,
-.button2,
-.button3,
-.button4,
-.button5,
-.button6,
-.button7,
-.button8,
-.button9,
-.buttonDecimal {
-    background-color: whitesmoke;
+.clear:active,
+.operate:active,
+.number:active {
+    font-weight: bold;
 }
 
-.button0:hover,
-.button1:hover,
-.button2:hover,
-.button3:hover,
-.button4:hover,
-.button5:hover,
-.button6:hover,
-.button7:hover,
-.button8:hover,
-.button9:hover,
-.buttonDecimal:hover {
-    background-color: rgb(235, 235, 235);
+.clear {
+    background-color: hsl(0, 100%, 65%);
 }
 
-.buttonClear,
-.buttonPlusMinus,
-.buttonProcent {
-    background-color: rgb(222, 222, 222);
+.operate {
+    background-color: hsl(85, 100%, 45%);
 }
 
-.buttonPlusMinus:hover,
-.buttonProcent:hover {
-    background-color: rgb(200, 200, 200);
-}
-
-.buttonClear:hover {
-    background-color: rgb(255, 100, 100);
-}
-
-.buttonDivide,
-.buttonMultiply,
-.buttonMinus,
-.buttonPlus,
-.buttonEquals {
-    border-radius: 0px;
-    background-color: greenyellow;
-}
-
-.buttonDivide:hover,
-.buttonMultiply:hover,
-.buttonMinus:hover,
-.buttonPlus:hover,
-.buttonEquals:hover {
-    border-radius: 0px;
-    background-color: rgb(139, 232, 0);
+.operate:hover {
+    background-color: hsl(85, 100%, 40%);
 }
 
 .displayCalculator2 {
