@@ -14,9 +14,11 @@ const calculate = (button) => {
         array = [];
         display.textContent = '';
         displayHistory.textContent = '';
+        sw = 0;
+        operator = false;
     } else if (value === '=') {
         const res = eval(aux);
-        if (res > 0 && res < 1) {
+        if ((res % 1) > 0 && (res % 1) < 1) {
             display.textContent = res.toFixed(2);
         } else {
             display.textContent = res;
@@ -55,11 +57,19 @@ const calculate = (button) => {
             sw = 2;
         }
     }
-    else if ((value === '%' || value === '/' || value === '*' || value === '-' || value === '+') && !operator) {
-        operator = true;
-        array.push(value);
-        aux = array.join('');
-        display.textContent = aux;
+    else if (value === '%' || value === '/' || value === '*' || value === '-' || value === '+') {
+        if (!operator && array.length) {
+            operator = true;
+            array.push(value);
+            aux = array.join('');
+            display.textContent = aux;
+        }
+        else if (array.length && !(Number(array[array.length - 1]) >= 0 && Number(array[array.length - 1]) <= 9)) {
+            operator = true;
+            array[array.length - 1] = value;
+            aux = array.join('');
+            display.textContent = aux;
+        }
     }
     else {
         array.push(value);
